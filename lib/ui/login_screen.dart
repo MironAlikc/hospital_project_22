@@ -3,13 +3,14 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:hospital_project_22/core/app_fonts.dart';
 import 'package:hospital_project_22/core/common_widgets/app_button.dart';
+import 'package:hospital_project_22/ui/check_code_page.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final int code = Random().nextInt(8999) + 1000;
+    final int code = Random().nextInt(8999) + 1000; 
     final TextEditingController controller = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
@@ -86,10 +87,16 @@ class LoginScreen extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
-                        '${code.toString()}\n${controller.text}',
+                        code.toString(),
                       ),
                     ),
                   );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CheckCodePage(code: code),
+                    ),
+                  ); 
                 },
               ),
             ),
