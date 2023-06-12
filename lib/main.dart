@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hospital_project_22/ui/first_screen.dart';
-
-
+import 'package:hospital_project_22/ui/main_page/bottom_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: FirstScreen(),
+      // home: FirstScreen(),
       // home: LoginScreen(),
+      home: BottomBar(),
     );
   }
 }
