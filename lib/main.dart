@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hospital_project_22/core/app_fonts.dart';
 import 'package:hospital_project_22/ui/first_screen.dart';
 import 'package:hospital_project_22/ui/main_page/bottom_bar.dart';
 
@@ -12,7 +13,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          unselectedLabelStyle: AppFonts.w500s10.copyWith(
+            color: const Color(0xffA3A3A3),
+          ),
+        ),
+      ),
       title: 'Flutter Demo',
       // home: FirstScreen(),
       // home: LoginScreen(),
