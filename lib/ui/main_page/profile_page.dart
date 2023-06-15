@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:hospital_project_22/core/app_fonts.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  const ProfilePage({
+    super.key,
+    required this.name,
+    required this.surName,
+  });
+
+  final String name;
+  final String surName;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +38,10 @@ class ProfilePage extends StatelessWidget {
           children: [
             Stack(
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 50,
                   child: Text(
-                    'AA',
+                    '${name[0]} ${surName[0]}  ',
                     style: AppFonts.w700s34,
                   ),
                 ),

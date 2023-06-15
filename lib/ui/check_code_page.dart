@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hospital_project_22/core/app_fonts.dart';
 import 'package:hospital_project_22/core/common_widgets/app_button.dart';
+import 'package:hospital_project_22/ui/main_page/create_profile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckCodePage extends StatefulWidget {
   const CheckCodePage({super.key, required this.code});
@@ -52,7 +54,17 @@ class _CheckCodePageState extends State<CheckCodePage> {
               onChanged: (value) {
                 if (value == widget.code.toString() || value.isEmpty) {
                   if (value == widget.code.toString()) {
-                    onPressed = () {};
+                    onPressed = () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CreateProfile(
+                            prefs: prefs,
+                          ),
+                        ),
+                      );
+                    };
                   }
                   errorText = null;
                   setState(() {});
