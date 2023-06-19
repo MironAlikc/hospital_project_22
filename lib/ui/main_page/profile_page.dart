@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:hospital_project_22/core/app_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,6 +20,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   XFile? img;
+  File? pickedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +51,14 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 CircleAvatar(
                   radius: 50,
-                  child: Text(
-                    '${widget.name[0]} ${widget.surName[0]}  ',
-                    style: AppFonts.w700s34,
-                  ),
+                  child: img == null
+                      ? Text(
+                          '${widget.name[0]} ${widget.surName[0]}  ',
+                          style: AppFonts.w700s34,
+                        )
+                      : Image.file(
+                          File(img!.path),
+                        ),
                 ),
                 Positioned(
                   right: 0,
@@ -78,8 +85,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> pickImage() async {
-    final image = ImagePicker().pickImage(source: ImageSource.gallery);
+    img = await ImagePicker().pickImage(source: ImageSource.gallery);
 
-    img = await image;
+    // pickedImage = File(img!.path);
+    setState(() {});
   }
 }
